@@ -2,4 +2,4 @@
 
 ## Em mautenção
 
-## Coloquem aqui as mudanças que estãos endo feitas no CRUD
+## Coloquem aqui as mudanças que estão sendo feitas no CRUD
