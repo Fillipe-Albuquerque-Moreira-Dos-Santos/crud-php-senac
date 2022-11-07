@@ -1,6 +1,6 @@
 <?php
 try{
-$pdo = new PDO ("mysql:dbname=agenda;host=localhost:3307","root","");
+$pdo = new PDO ("mysql:dbname=agenda;host=localhost:3306","root","");
 
 }catch(PDOException $e) {
     echo "Deu erro na conexão: conexao com o banco de dados dados errados " . $e-> getMessage();
@@ -8,7 +8,6 @@ $pdo = new PDO ("mysql:dbname=agenda;host=localhost:3307","root","");
     echo "Erro de boa" . $e-> getMessage();
 }
 
-echo "A conexao funcinou parabéns";
 
 
 
@@ -48,4 +47,26 @@ $cmd->execute();
 
 //$res = $pdo->query("DELETE FROM pessoa WHERE id = '3'");
 
+
+
+//--------------------------------------------UPDATE PESSOA----------------------------------------------
+
+
+
+$cmd = $pdo -> prepare("SELECT * FROM tb_pessoa WHERE id_pessoa = :id_pessoa");
+$cmd -> bindValue (":id_pessoa",4);
+$cmd -> execute();
+$resultado = $cmd ->fetch(PDO::FETCH_ASSOC);
+
+foreach ($resultado as $key => $value) {
+    echo $key. ":". $value. "<br>";
+}
+class Pessoa {
+public function buscarDados() {
+    $res = array();
+    $cmd = $this -> pdo -> query ("SELECT * FROM tb_pessoa WHERE id_pessoa = :id_pessoa");
+    $res = $cmd -> fetchAll(PDO::FETCH_ASSOC);
+    return $res;
+}
+}
 ?>
