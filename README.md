@@ -1,5 +1,10 @@
 # crud-php-senac
+# Nomes dos integrantes do grupo
+## Fillipe Albuquerque
+## João Lucas
+## Guilherme Oliveira
+## Gabriel Cardoso
 
-## Em mautenção
+## Finalizando alguns pontos
 
-## Coloquem aqui as mudanças que estão sendo feitas no CRUD
+
