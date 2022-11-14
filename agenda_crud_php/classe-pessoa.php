@@ -22,4 +22,6 @@ private $pdo;
         $res = $cmd -> fetchAll(PDO::FETCH_ASSOC);
         return $res;
     }
+
+   // public function cadastrarPessoa($nome,) 
 }

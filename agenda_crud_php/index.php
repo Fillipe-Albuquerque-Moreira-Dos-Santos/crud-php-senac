@@ -22,6 +22,14 @@ echo "teve conexao";
             <h2>CADASTRAR PESSOA</h2>
             <label>Nome</label>
             <input type="text" name="nome" id="nome">
+            <label>Sexo</label>	
+	        <select>
+            <option value="">Selecione o sexo</option> 
+            <option value="2">M</option>
+            <option value="3">F</option>
+            </select>
+            <label>Data de nascimento</label>
+            <input id="date" type="date">
             <label>Telefone</label>
             <input type="text" name="telefone" id="telefone">
             <label>Email</label>
@@ -35,7 +43,10 @@ echo "teve conexao";
 
     <table>
             <tr>
+                <td>ID</td>
                 <td>Nome</td>
+                <td>Sexo</td>
+                <td>Data de nascimento</td>
                 <td>Telefone</td>
                 <td colspan="2">Email</td>
             </tr>
@@ -50,17 +61,14 @@ echo "teve conexao";
                         echo "<td>".$v."</td>";
                     }
                 }
+                ?>
+                <td><a href = "">Editar</a><a href="">Exluir</a></td>;
+                <?php
                 echo "</tr>";
             }
         }
         ?>
-            <tr>
-                <td>filipe</td>
-                <td>12345678</td>
-                <td>filipe@gmail.com</td>
-                <td><a href="">Editar</a><a href="">Excluir</a> </td>
 
-            </tr>
         </table>
     </selection>
 
