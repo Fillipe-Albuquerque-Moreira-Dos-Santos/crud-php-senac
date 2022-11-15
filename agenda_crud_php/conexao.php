@@ -1,4 +1,6 @@
 <?php
+//---------------------------------CODIGOS PARA O AUXILIO COM O BANCO DE DADOS-------------------------------------
+/*
 try{
 $pdo = new PDO ("mysql:dbname=agenda;host=localhost:3306","root","");
 
@@ -8,7 +10,7 @@ $pdo = new PDO ("mysql:dbname=agenda;host=localhost:3306","root","");
     echo "Erro de boa" . $e-> getMessage();
 }
 
-
+*/
 
 
 //--------------------------------INSERT DADOS-------------------------------------------
