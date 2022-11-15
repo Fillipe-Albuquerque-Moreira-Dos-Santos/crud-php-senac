@@ -19,6 +19,24 @@ echo "teve conexao";
 <?php
 
 if (isset($_POST['nome'])) {
+
+if (isset($_GET['id_up']) && !empty($_GET['id_up'])) {
+
+  $id_upd = addslashes($_GET['id_up']);
+  $nome = addslashes($_POST['nome']);
+  $sexo = addslashes($_POST['sexo']);
+  $data_nasc = addslashes($_POST['data_nasc']);
+  $telefone= addslashes($_POST['telefone']);
+  $email = addslashes($_POST['email']);
+  if (!empty($nome) && !empty($sexo) && !empty($data_nasc) && !empty($telefone) && !empty($email)) {
+    $p -> atualizarDados($id_upd,$nome,$sexo,$data_nasc,$telefone,$email);
+    header("location: index.php");
+  }else {
+    echo"Todos os campos são obrigatórios";
+  } 
+
+}else {
+
   $nome = addslashes($_POST['nome']);
   $sexo = addslashes($_POST['sexo']);
   $data_nasc = addslashes($_POST['data_nasc']);
@@ -29,6 +47,8 @@ if (isset($_POST['nome'])) {
   }else {
     echo"Todos os campos são obrigatórios";
   } 
+
+} 
   
 }
 ?>
@@ -49,27 +69,27 @@ if (isset($_GET['id_up'])) {
                 <form method="POST">
 
                  <div class="user-box">
-                    <input type="text" name="nome" id="nome" value="<?php if (isset($res)) {echo $res['nome'];}?>">
+                    <input type="text" name="nome" id="nome" value="<?php if (isset($res)) {echo $res['ds_nome'];}?>">
                     <label>Nome</label>
                  </div>
 
                  <div class="user-box">
-                    <input type="text" name="sexo" id="sexo" value="<?php if (isset($res)) {echo $res ['sexo'];}?>">
+                    <input type="text" name="sexo" id="sexo" value="<?php if (isset($res)) {echo $res ['cd_sexo'];}?>">
                     <label>Sexo (M) Masculino e (F) Feminino (N) Neutro</label>
                  </div>
 
                  <div class="user-box">
-                    <input type="date" name="data_nasc" id="data_nasc" value="<?php if (isset($res)) {echo $res['data_nasc'];} ?>">
+                    <input type="date" name="data_nasc" id="data_nasc" value="<?php if (isset($res)) {echo $res['dt_nasc'];} ?>">
                     <label>Data de Nascimento</label>
                  </div>
 
                 <div class="user-box">
-                    <input type="text" name="telefone"id="telefone" value="<?php if (isset($res)) {echo $res ['telefone'];} ?>">
+                    <input type="text" name="telefone"id="telefone" value="<?php if (isset($res)) {echo $res ['nr_telefone'];} ?>">
                     <label>Telefone</label>
                 </div>
 
                 <div class="user-box">
-                     <input type="email" name="email" id="email" value="<?php if (isset($res)) {echo $res['email'];} ?>">
+                     <input type="email" name="email" id="email" value="<?php if (isset($res)) {echo $res['ds_email'];} ?>">
                      <label>Email</label>
                 </div>
                 <input class="inv" type="submit" value="<?php if (isset($res)) {echo "Atualizar";} else{echo "Cadastrar";}?>">

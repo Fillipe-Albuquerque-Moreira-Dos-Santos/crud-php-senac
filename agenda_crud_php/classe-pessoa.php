@@ -15,7 +15,6 @@ private $pdo;
         
     }
 
-
     
     public function buscarDados() {
         $res = array();
@@ -54,7 +53,16 @@ private $pdo;
     }
 
 
-public function atualizarDados() {
+public function atualizarDados($id,$nome,$sexo,$data_nasc,$telefone,$email) {
+
+        $cmd = $this -> pdo -> prepare("UPDATE tb_pessoa SET ds_nome= :n, cd_sexo = :s, dt_nasc = :na, nr_telefone = :t, ds_email = :e WHERE id_pessoa = :id");
+     $cmd->bindValue(":n",$nome);
+        $cmd->bindValue(":s",$sexo);
+        $cmd->bindValue(":na",$data_nasc);
+        $cmd->bindValue(":t",$telefone);
+        $cmd->bindValue(":e",$email);
+        $cmd->bindValue(":id",$id);
+        $cmd -> execute();
 
 }
 
