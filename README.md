@@ -5,7 +5,7 @@ Código da implementação de um CRUD com PHP orientado a objetos e MySQL
 ![preview img](/TelaPrincipal.png)
 
 ## Tela de Edição
-![preview img](/TelaEdicao.png)
+![preview img](/TeladeEdicao.png)
 
 ## Tela Exclusão
 ![preview img](/TeladeExclusao.png)
