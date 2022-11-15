@@ -1,3 +1,4 @@
+
 <?php
 require_once 'classe-pessoa.php';
 $p = new Pessoa ("agenda", "localhost", "root", "");
@@ -6,51 +7,92 @@ echo "teve conexao";
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CRUD PHP</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <selection id="direita">
 
-        <form>
-            <h2>CADASTRAR PESSOA</h2>
-            <label>Nome</label>
-            <input type="text" name="nome" id="nome">
-            <label>Sexo</label>	
-	        <select>
-            <option value="">Selecione o sexo</option> 
-            <option value="2">M</option>
-            <option value="3">F</option>
-            </select>
-            <label>Data de nascimento</label>
-            <input id="date" type="date">
-            <label>Telefone</label>
-            <input type="text" name="telefone" id="telefone">
-            <label>Email</label>
-            <input type="text" name="email" id="email">
-            <input type="submit" value="cadastrar">
+<?php
 
-        </form>
-    </selection>
+if (isset($_POST['nome'])) {
+  $nome = addslashes($_POST['nome']);
+  $sexo = addslashes($_POST['sexo']);
+  $data_nasc = addslashes($_POST['data_nasc']);
+  $telefone= addslashes($_POST['telefone']);
+  $email = addslashes($_POST['email']);
+  if (!empty($nome) && !empty($sexo) && !empty($data_nasc) && !empty($telefone) && !empty($email)) {
+    $p -> cadastrarPessoa($nome,$sexo,$data_nasc,$telefone,$email);
+  }else {
+    echo"Todos os campos são obrigatórios";
+  } 
+  
+}
+?>
 
-    <selection id="esquerda">
+<?php
 
-    <table>
-            <tr>
+if (isset($_GET['id_up'])) {
+
+  $id_update = addslashes($_GET['id_up']);
+  $res = $p -> buscarDadosPessoa ($id_update);
+}
+
+?>
+ 
+    <section id="esquerda">
+        <div class="login-box">
+            <h2>Cadastro de Pessoas</h2>
+                <form method="POST">
+
+                 <div class="user-box">
+                    <input type="text" name="nome" id="nome" value="<?php if (isset($res)) {echo $res['nome'];}?>">
+                    <label>Nome</label>
+                 </div>
+
+                 <div class="user-box">
+                    <input type="text" name="sexo" id="sexo" value="<?php if (isset($res)) {echo $res ['sexo'];}?>">
+                    <label>Sexo (M) Masculino e (F) Feminino (N) Neutro</label>
+                 </div>
+
+                 <div class="user-box">
+                    <input type="date" name="data_nasc" id="data_nasc" value="<?php if (isset($res)) {echo $res['data_nasc'];} ?>">
+                    <label>Data de Nascimento</label>
+                 </div>
+
+                <div class="user-box">
+                    <input type="text" name="telefone"id="telefone" value="<?php if (isset($res)) {echo $res ['telefone'];} ?>">
+                    <label>Telefone</label>
+                </div>
+
+                <div class="user-box">
+                     <input type="email" name="email" id="email" value="<?php if (isset($res)) {echo $res['email'];} ?>">
+                     <label>Email</label>
+                </div>
+                <input class="inv" type="submit" value="<?php if (isset($res)) {echo "Atualizar";} else{echo "Cadastrar";}?>">
+                </form>
+           
+        </div>
+    </section>
+
+    <section id="direita">
+        <table>
+            <tr style="
+    background: linear-gradient(76.8deg, 
+    rgb(121, 45, 129) 
+    3.6%, rgb(36, 31, 98) 90.4%);">
                 <td>ID</td>
                 <td>Nome</td>
                 <td>Sexo</td>
-                <td>Data de nascimento</td>
-                <td>Telefone</td>
-                <td colspan="2">Email</td>
+                <td>Data de Nascimento</td>
+                <td>Telefone</td>         
+                <td>Email</td>
+                <td colspan="2">Edição dos dados</td>
             </tr>
-        <?php
+            <?php
         $dados = $p->buscarDados();
         if (count($dados) > 0) {
             for ($i =0; $i < count ($dados); $i++) {
@@ -62,16 +104,30 @@ echo "teve conexao";
                     }
                 }
                 ?>
-                <td><a href = "">Editar</a><a href="">Exluir</a></td>;
+                <td>
+               
+                  <a href = "index.php?id_up=<?php echo $dados[$i]['id_pessoa'];?>">Editar</a>
+                  <a href = "index.php?id_pessoa=<?php echo $dados[$i]['id_pessoa'];?>">Excluir</a>
+                  
+                </td>
                 <?php
                 echo "</tr>";
             }
         }
+        
+        
         ?>
-
         </table>
-    </selection>
-
+    </section>
 </body>
-
 </html>
+
+<?php
+if (isset($_GET['id_pessoa'])) {
+  $id_pessoa = addslashes($_GET['id_pessoa']);
+  $p -> excluirPessoa($id_pessoa);
+  header("location: index.php");
+}
+
+
+?>

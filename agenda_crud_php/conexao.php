@@ -13,18 +13,20 @@ $pdo = new PDO ("mysql:dbname=agenda;host=localhost:3306","root","");
 
 //--------------------------------INSERT DADOS-------------------------------------------
 
-/*$res = $pdo ->prepare("INSERT INTO tb_pessoa(ds_nome, cd_sexo, dt_nasc, nr_telefone, 
+/*
+$res = $pdo ->prepare("INSERT INTO tb_pessoa(ds_nome, cd_sexo, dt_nasc, nr_telefone, 
 ds_email) VALUES (:n, :s, :na, :t, :e)");
 $res->bindValue(":n","Roberta");
 $res->bindValue(":s","F");
 $res->bindValue(":na","2003-07-06");
 $res->bindValue(":t","61965432367");
 $res->bindValue(":e","robzinha@uol.com.dx");
-$res->execute();*/
-
-/*$pdo->query("INSERT INTO tb_pessoa(ds_nome, cd_sexo, dt_nasc, nr_telefone, 
-ds_email) VALUES('Roberta','F','2003-07-06','61986543278','robert@gmail.com')");*/
-
+$res->execute();
+*/
+/*
+$pdo->query("INSERT INTO tb_pessoa(ds_nome, cd_sexo, dt_nasc, nr_telefone, 
+ds_email) VALUES('Roberta','F','2003-07-06','61986543278','robert@gmail.com')");
+*/
 
 //--------------------------------------Deletar Dados--------------------------------------
 
@@ -36,9 +38,10 @@ $cmd -> execute();
 
 */
 
-/*
 
---------------------------------------------UPDATE PESSOA----------------------------------------------
+
+//--------------------------------------------UPDATE PESSOA----------------------------------------------
+/*
 $cmd = $pdo->prepare("UPDATE tb_pessoa SET ds_email = :e WHERE id_pessoa = :id_pessoa");
 $cmd->bindValue(":e","Miriam@gmail.com");
 $cmd->bindValue(":id_pessoa",1);
@@ -52,7 +55,7 @@ $cmd->execute();
 //--------------------------------------------UPDATE PESSOA----------------------------------------------
 
 
-
+/*
 $cmd = $pdo -> prepare("SELECT * FROM tb_pessoa WHERE id_pessoa = :id_pessoa");
 $cmd -> bindValue (":id_pessoa",4);
 $cmd -> execute();
@@ -61,6 +64,8 @@ $resultado = $cmd ->fetch(PDO::FETCH_ASSOC);
 foreach ($resultado as $key => $value) {
     echo $key. ":". $value. "<br>";
 }
+*/
+/*
 class Pessoa {
 public function buscarDados() {
     $res = array();
@@ -69,4 +74,5 @@ public function buscarDados() {
     return $res;
 }
 }
+*/
 ?>
