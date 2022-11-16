@@ -6,6 +6,7 @@ Código da implementação de um CRUD com PHP
  ### João Lucas
  ### Guilherme Oliveira
  ### Gabriel Cardoso
+ ### Davi Emanuel
 
 
 ## -----------------------------------------------------------------------------------
