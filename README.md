@@ -1,6 +1,6 @@
 # CRUD com PHP e MARIADB 
 Código da implementação de um CRUD com PHP 
-## ---------------------------------------------------------------------------
+## -------------------------------------------------------------------------
 # Nomes dos integrantes do grupo
  ### Fillipe Albuquerque
  ### João Lucas
