@@ -9,7 +9,7 @@ Código da implementação de um CRUD com PHP
  ### Davi Emanuel
 
 
-## -----------------------------------------------------------------------
+## ----------------------------------------------------------------------
 ## Tela Principal
 ![preview img](/TelaPrincipal.png)
 
