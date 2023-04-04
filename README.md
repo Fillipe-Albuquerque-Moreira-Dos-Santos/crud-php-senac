@@ -1,4 +1,4 @@
-# CRUD com PHP e MARIADB 
+# CRUD com PHP e MYSQL 
 Código da implementação de um CRUD com PHP 
 ## --------------------------------------------------------------------
 # Nomes dos integrantes do grupo
